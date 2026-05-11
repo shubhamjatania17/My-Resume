@@ -1,160 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shubham Jatania</title>
+    <title>Shubham Jatania | Resume</title>
     <link rel="icon" href="https://lh3.googleusercontent.com/a/ACg8ocKv8GaeMxNE0PhmQZ7ekM0m5mRHCJtNW0C9T8C_GiTZXH0Nfbvf=s360-c-no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --primary-color: #22d3ee;
+            --secondary-color: #a78bfa;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --selection-bg: rgba(34, 211, 238, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(167, 139, 250, 0.05) 0%, transparent 50%);
+        }
+
+        ::selection {
+            background-color: var(--selection-bg);
+            color: var(--primary-color);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 3rem 0;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 4rem 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .profile-img {
+            border-radius: 24px;
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.2);
+            border: 2px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.4);
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        header strong a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        header strong a:hover {
+            text-decoration: underline;
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--primary-color);
+        }
+
+        h2::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border-color);
+        }
+
+        /* Cards/Lists */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(8px);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: rgba(34, 211, 238, 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th {
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--primary-color);
+            text-align: left;
+            padding: 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-primary);
+        }
+
+        /* List Styling */
+        ol, ul {
+            list-style-position: inside;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        li strong {
+            color: var(--text-primary);
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+        }
+
+        .experience-item ul {
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+            list-style-type: circle;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Footer & Links */
+        footer {
+            padding: 4rem 2rem;
+            background: rgba(15, 23, 42, 0.5);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        #links-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        #links-list li a {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        #links-list li a:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        /* Form Styling */
+        form {
+            max-width: 500px;
+            margin: 2rem auto;
+            text-align: left;
+        }
+
+        fieldset {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            background: var(--card-bg);
+        }
+
+        legend {
+            padding: 0 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.1);
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Outfit', sans-serif;
+            border: none;
+        }
+
+        button[type="submit"] {
+            background: var(--primary-color);
+            color: var(--bg-color);
+            margin-right: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
+        }
+
+        button[type="reset"] {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        button[type="reset"]:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 0;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
-<nav align="left">
-    <a href="#Education">Education</a>
-    <a href="#Work Experience">Work Experience</a>
-    <a href="#Skills">Skills</a>
-    <a href="#My Projects">My Projects</a>
-    <a href="#links">Connect With Me</a>
-    <hr>
-</nav>
-<header
-    <img style="float: left;" src="https://lh3.googleusercontent.com/a/ACg8ocKv8GaeMxNE0PhmQZ7ekM0m5mRHCJtNW0C9T8C_GiTZXH0Nfbvf=s360-c-no" alt="Image placeholder for profile picture" width="150" height="150">
-    <h1>Shubham Jatania</h1>
-    <p>I am B.Tech student studying in <strong><a target="_blank" href="https://engineering.nmims.edu/">Mukesh Patel School of Technology Management and Engineering.</a></strong></p>
-    <p>I ❤️ learning new coding languages.</p>
-    <hr>
-</header>
-<main>
-    <section id="Education">
-        <h2>Education</h2>
-        <table border="1">
-        <thead>
-            <th>Course</th>
-            <th>Institute</th>
-            <th>Year of Completion</th>
-            <th>Result</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>B.Tech in Artificial Intelligence</td>
-                <td>Mukesh Patel School of Technology Management and Engineering</td>
-                <td>2029 (Expected)</td>
-                <td>8.2 CGPA (Till 1st Sem)</td>
-            </tr>
-            <tr>
-                <td>Higher Secondary Certificate (HSC)</td>
-                <td>Prakash College of Science, Mumbai</td>
-                <td>2025</td>
-                <td>67.33%</td>
-            </tr>
-            <tr>
-                <td>International General Certificate of Secondary Education (IGCSE)</td>
-                <td>S.H Agarwal International School, Mumbai</td>
-                <td>2023</td>
-                <td>91.50%</td>
-            </tr>
-        </tbody>
-        </table>
-    </section>
-    <section id="Work Experience">
-        <h2>Work Experience</h2>
-        <ol>
-        <li>
-            Logistics Executive at <strong><a target="_blank" href="https://www.sattvafest.in/">Satva 2026</a></strong>
-        </li>
-        <ul>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-        </ul>
-        <li>
-            Digital Creatives Executive at <strong><a target="_blank" href="https://gdg.community.dev/gdg-on-campus-svkm-nmims-mukesh-patel-school-of-technology-management-and-engineering-mumbai-india/">GDG on Campus MPSTME</a></strong>
-        </li>
-        <ul>
-            <li>Worked on 2 instagram stories.</li>
-            <li>Created posters for Build and Grow 2.0 AI Hackathon</li>
-        </ul>
-        </ol>
-    </section>
-    <section id="Skills">
-        <h2>Skills</h2>
-    <ol>
-        <strong>Coding Skills:</strong>
-        <ul>
-            <li>Python</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>C++ (Basics)</li>
-        </ul>
-        <strong>Other Skills:</strong>
-        <ul>
-            <li>Graphic Designing</li>
-            <li>Video Editing</li>
-            <li>Public Speaking</li>
-            <li>Team Leadership</li>
-            <li>Event Management</li>
-            <li>Linguistic Skills</li>
-            <ul>
-                <li>English</li>
-                <li>Hindi</li>
-                <li>Marathi</li>
-                <li>Gujarati</li>
-                <li>French (Intermediate)</li>
-                <li>German (Basics)</li>
-            </ul>
-        </ul>
-    </ol>
-    </section>
-    <section id="My Projects">
-        <h2>My Projects</h2>
-        <article>
-         <p><a target="_blank" href="my project.html">My project 1</a></p>
-         <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, itaque atque. Accusamus facere officiis neque voluptatem fuga! Atque dicta ut labore illo corporis veritatis necessitatibus neque! Illum dolore delectus itaque 
-            harum iste nesciunt doloremque eaque nobis eveniet vero, esse quos adipisci sint praesentium, quia perferendis sunt. Nisi aliquam, dignissimos quia architecto distinctio ea beatae corporis delectus animi! Soluta obcaecati, quo 
-            aperiam dolorem corrupti atque placeat dolorum repellendus temporibus est laborum incidunt, voluptatem iure consequatur impedit possimus! Rerum sunt incidunt libero veritatis, laudantium sed assumenda inventore eum voluptate 
-            ratione. Corporis ab, vitae incidunt quae mollitia itaque quas expedita eveniet culpa suscipit voluptatibus, totam recusandae debitis. Culpa debitis quas consectetur, fuga eum error non, quibusdam impedit veniam nulla sunt, optio 
-            ab quia reiciendis doloremque! Adipisci minima perferendis recusandae, necessitatibus id aperiam non ducimus eveniet ullam illo consequatur harum, odio alias sed. Possimus odio corporis natus, dicta qui labore laboriosam tenetur
-            molestias eius, hic atque dolores nobis eum dignissimos consequatur porro impedit ipsa est. Culpa quia laborum, quasi itaque nihil sequi libero? Ullam explicabo id necessitatibus facilis impedit reprehenderit libero asperiores officia. 
-            Iusto, recusandae. Iure velit, delectus modi fugit est, at officia, iusto facere vitae enim beatae. Aperiam ab laboriosam eligendi reprehenderit assumenda!
-        </p>
-        </article>
-    </section>
-    <hr>
-</main>
-<footer>
-    <p>&copy; 2025 Shubham Jatania. All rights reserved.</p>
-    <h2 id="links">Connect With Me</h2>
-    <ol type="I">
-        <li><a target="_blank" href="https://www.instagram.com/shubham.jatania/">Instagram</a></li>
-        <li><a target="_blank" href="https://www.linkedin.com/in/shubham-jatania-170307shub">LinkedIn</a></li>
-        <li><a target="_blank" href="https://github.com/shubhamjatania17">GitHub</a></li>
-        <li><a target="_blank" href="https://x.com/spj1703">X</a></li>
-        <li><a target="_blank" href="mailto:shubham.jatania@gmail.com">My email</a></li>
-        <li><a href="tel:+91">7021169088</a></li>
-    </ol>
-    <form action="/submit-query" method="post">
-        <fieldset style="width: 50%;">
-            <legend>Send a Query</legend>
-            <label for="query-name">Full Name</label>
-            <input type="text" id="query-name" name="name" placeholder="Enter your full name" required><br><br>
 
-            <label for="query-email">Email</label>
-            <input type="email" id="query-email" name="email" placeholder="you@example.com" required><br><br>
+<body>
+    <nav>
+        <a href="#Education">Education</a>
+        <a href="#Work Experience">Experience</a>
+        <a href="#Skills">Skills</a>
+        <a href="#links">Connect</a>
+    </nav>
 
-            <label for="query-topic">Topic</label>
-            <select id="query-topic" name="topic" required>
-                <option value="" disabled selected>Select a topic</option>
-                <option value="collaboration">Collaboration</option>
-                <option value="project">Project Inquiry</option>
-                <option value="other">Other</option>
-            </select><br><br>
+    <div class="container">
+        <header>
+            <img class="profile-img"
+                src="https://lh3.googleusercontent.com/a/ACg8ocKv8GaeMxNE0PhmQZ7ekM0m5mRHCJtNW0C9T8C_GiTZXH0Nfbvf=s360-c-no"
+                alt="Shubham Jatania Profile" width="160" height="160">
+            <div>
+                <h1>Shubham Jatania</h1>
+                <p>B.Tech Artificial Intelligence student at <strong><a target="_blank"
+                            href="https://engineering.nmims.edu/">Mukesh Patel School of Technology Management and
+                            Engineering</a></strong>.</p>
+                <p>Bibliophile | Tech Enthusiast | Life-long Learner</p>
+                <p>I ❤️ exploring new coding languages and building intelligent solutions.</p>
+            </div>
+        </header>
 
-            <label for="query-message">Message</label>
-            <br>
-            <textarea id="query-message" name="message" rows="5" placeholder="Share the details of your query" required></textarea><br><br>
+        <main>
+            <section id="Education">
+                <h2>Education</h2>
+                <div class="card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Institute</th>
+                                <th>Year</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>B.Tech in AI</td>
+                                <td>NMIMS MPSTME</td>
+                                <td>2029 (Exp)</td>
+                                <td>8.2 CGPA</td>
+                            </tr>
+                            <tr>
+                                <td>HSC</td>
+                                <td>Prakash College</td>
+                                <td>2025</td>
+                                <td>67.33%</td>
+                            </tr>
+                            <tr>
+                                <td>IGCSE</td>
+                                <td>S.H Agarwal Intl</td>
+                                <td>2023</td>
+                                <td>91.50%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-            <button type="submit">Submit Query</button>
-            <button type="reset">Reset Query</button>
-        </fieldset>
-    </form>
-</footer>
-</html>
+            <section id="Work Experience">
+                <h2>Work Experience</h2>
+                <div class="card">
+                    <div class="experience-item">
+                        <p><strong>Logistics Executive</strong> | <a target="_blank" href="https://www.sattvafest.in/">Sattva 2026</a></p>
+                        <ul>
+                            <li>Managed on-ground production and infrastructure requirements.</li>
+                            <li>Coordinated setup for stages, canopies, and flea stalls.</li>
+                            <li>Distributed supplies efficiently across various departments.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <p><strong>Digital Creatives Executive</strong> | <a target="_blank" href="https://gdg.community.dev/gdg-on-campus-svkm-nmims-mukesh-patel-school-of-technology-management-and-engineering-mumbai-india/">GDG on Campus MPSTME</a></p>
+                        <ul>
+                            <li>Designed engaging visual content for Instagram stories.</li>
+                            <li>Created promotional posters for the Build and Grow 2.0 AI Hackathon.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="Skills">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="card">
+                        <p><strong>Coding Skills</strong></p>
+                        <ul>
+                            <li>Python & C++</li>
+                            <li>HTML / CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p><strong>Professional</strong></p>
+                        <ul>
+                            <li>Graphic Design</li>
+                            <li>Video Editing</li>
+                            <li>Team Leadership</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p><strong>Languages</strong></p>
+                        <ul>
+                            <li>English & Hindi</li>
+                            <li>Marathi & Gujarati</li>
+                            <li>French (Int) / German (Basics)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <h2 id="links" style="justify-content: center; border: none;">Connect With Me</h2>
+        <ul id="links-list">
+            <li><a target="_blank" href="https://www.instagram.com/shubham.jatania/">Instagram</a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/shubham-jatania-170307shub">LinkedIn</a></li>
+            <li><a target="_blank" href="https://github.com/shubhamjatania17">GitHub</a></li>
+            <li><a target="_blank" href="https://x.com/spj1703">X</a></li>
+            <li><a target="_blank" href="mailto:shubham.jatania@gmail.com">Email</a></li>
+            <li><a href="tel:+917021169088">Call Me</a></li>
+        </ul>
+
+        <form action="/submit-query" method="post">
+            <fieldset>
+                <legend>Send a Message</legend>
+                <label for="query-name">Full Name</label>
+                <input type="text" id="query-name" name="name" placeholder="John Doe" required>
+
+                <label for="query-email">Email</label>
+                <input type="email" id="query-email" name="email" placeholder="john@example.com" required>
+
+                <label for="query-topic">Topic</label>
+                <select id="query-topic" name="topic" required>
+                    <option value="" disabled selected>Select a topic</option>
+                    <option value="collaboration">Collaboration</option>
+                    <option value="project">Project Inquiry</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="query-message">Message</label>
+                <textarea id="query-message" name="message" rows="4" placeholder="How can I help you?" required></textarea>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit">Send Message</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </fieldset>
+        </form>
+        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 3rem;">&copy; 2025 Shubham Jatania. Built with passion.</p>
+    </footer>
+</body>
+
+</html>
